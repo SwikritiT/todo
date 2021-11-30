@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:e2e": "cucumber-js --require tests/acceptance/cucumber.conf.js --require tests/acceptance/stepDefinitions"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +35,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.0.0-rc.1",
+    "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
+    "chromedriver": "^96.0.0",
+    "geckodriver": "^2.0.4",
+    "nightwatch": "^1.7.12",
+    "nightwatch-api": "^3.0.2",
+    "selenium-server": "^3.141.59"
   }
 }
