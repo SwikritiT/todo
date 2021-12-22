@@ -16,7 +16,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test:e2e": "cucumber-js --require cucumber.config.ts --require-module ts-node/register --require tests/acceptance/stepDefinitions/**/*.ts"
+    "test:e2e": "cucumber-js --require cucumber.config.ts --require-module ts-node/register --require tests/acceptance/stepDefinitions/**/*.ts --format @cucumber/pretty-formatter"
   },
   "eslintConfig": {
     "extends": [
@@ -38,8 +38,8 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.5",
-    "@cucumber/cucumber": "^8.0.0-rc.1",
     "@cucumber/messages": "^17.1.1",
+    "@cucumber/pretty-formatter": "^1.0.0-alpha.1",
     "@playwright/test": "^1.17.1",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
