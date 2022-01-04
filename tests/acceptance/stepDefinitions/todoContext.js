@@ -1,14 +1,19 @@
 const {Given, When, Then} = require('@cucumber/cucumber')
+const {HomePage} = require('../pageObjects/HomePage')
 
-Given('a user has navigated to the homepage', function () {
-    await page.goto("http://localhost:3000")
+const homePage = new HomePage();
+
+Given('a user has navigated to the homepage', async function () {
+    //const homePage = new HomePage(page);
+    await homePage.navigate();
 });
 
-When('the user adds {string} to the todo list using the webUI', function (item) {
-    
+When('the user adds {string} to the todo list using the webUI',async function (item) {
+   //const homePage = new HomePage(page);
+   await homePage.addItemTodoList(item)
 });
 
-Then('card {string} should be displayed on the webUI', function (item) {
-    // Write code here that turns the phrase above into concrete actions
-    return 'pending';
+Then('card {string} should be displayed on the webUI', async function (item) {
+  // const homePage = new HomePage(page);
+    await homePage.itemShouldBeDisplayedInWebUI(item);
 });

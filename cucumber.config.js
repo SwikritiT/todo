@@ -13,9 +13,11 @@ BeforeAll(async function () {
         // Slow so we can see things happening
         // slowMo: 50,
     });
+    
 });
 
 AfterAll(async function () {
+    
     await global.browser.close();
 });
 
