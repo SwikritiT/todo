@@ -1,12 +1,9 @@
 const { Before, BeforeAll, AfterAll, After, setDefaultTimeout } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
-const { expect } = require("@playwright/test");
 
-// playwright expect to global
-global.expect = expect;
+setDefaultTimeout(60000)
 
-setDefaultTimeout(100000)
-
+// launch the browser 
 BeforeAll(async function () {
     global.browser = await chromium.launch({
         headless: false,
@@ -15,6 +12,7 @@ BeforeAll(async function () {
 
 });
 
+// close the browser
 AfterAll(async function () {
 
     await global.browser.close();

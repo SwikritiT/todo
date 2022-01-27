@@ -5,11 +5,6 @@ Feature: todo
 
   Scenario: Add item to the todo list
     Given a user has navigated to the homepage
+    # the text inside quote works as a variable that can be passed to a function
     When the user adds "test" to the todo list using the webUI
     Then card "test" should be displayed on the webUI
-
-  Scenario: Remove item from the list
-    Given a user has navigated to the homepage
-    And the user has added "test" to the todo list
-    When the user removes the item from the list
-    Then there should be no item displayed on the webUI

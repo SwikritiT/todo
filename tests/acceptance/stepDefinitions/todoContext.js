@@ -1,30 +1,36 @@
 const {Given, When, Then} = require('@cucumber/cucumber')
-const {HomePage} = require('../pageObjects/HomePage')
+// import expect for assertion
+const { expect } = require("@playwright/test")
 
-const homePage = new HomePage();
+//launch url
+const url = 'http://localhost:3000'
+
+//define selectors
+const homepageElement = '.borderTodo'
+const todoInput = '.todo-input'
+const todoButton = '.todo-button'
+const todoItem = '.todo .todo-item '
+
 
 Given('a user has navigated to the homepage', async function () {
-    await homePage.navigate();
-});
+    // navigate to the app
+    await page.goto(url)
+    // locat the element in the webUI
+    const locator = page.locator(homepageElement)
+    // assert that it's visible
+    expect(locator).toBeVisible()
+})
 
-Given('the user has added {string} to the todo list', async function (item) {
-    await homePage.addItemTodoList(item);
-    return homePage.itemShouldBeDisplayedInWebUI(item);
-});
+When('the user adds {string} to the todo list using the webUI',async function (item) {
+    // fill the item that was input from the feature file , to the inputText feild in the UI
+    await page.fill(todoInput , item)
+    // click the button
+    await page.click(todoButton)
+})
 
-
-When('the user adds {string} to the todo list using the webUI',function (item) {
-    return homePage.addItemTodoList(item)
-});
-
-Then('card {string} should be displayed on the webUI',function (item) {
-    return homePage.itemShouldBeDisplayedInWebUI(item);
-});
-
-When('the user removes the item from the list', function () {
-    return homePage.removeItemFromTodoList();
-});
-
-Then('there should be no item displayed on the webUI', function () {
-    
-});
+Then('card {string} should be displayed on the webUI',async function (item) {
+    // get text of the item that is visible in the UI 
+    const text = await page.innerText(todoItem)
+    // assert that its name is similar to what we provided
+    expect(text).toBe(item)
+})
