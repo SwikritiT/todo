@@ -4,6 +4,7 @@ class HomePage{
         this.todoInput = '.todo-input';
         this.todoButton = '.todo-button';
         this.todoItem = '.todo .todo-item ';
+        this.deleteBtn = '.trash-btn';
     }
 
     async navigate() {
@@ -17,6 +18,13 @@ class HomePage{
     async itemShouldBeDisplayedInWebUI(item){
         const text = await page.innerText(this.todoItem);
         expect(text).toBe(item);
+    }
+    async removeItemFromTodoList(){
+        await page.click(this.deleteBtn);
+    }
+    async itemShouldNotBeDisplayedInWebUI(){
+        const locator = page.locator(this.todoItem);
+        expect(locator).not.toBeVisible();
     }
 }
 
