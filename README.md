@@ -16,3 +16,12 @@ You will also see any lint errors in the console.
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+
+### for running e2e tests
+
+Start the project
+- `yarn start` 
+
+Run the tests
+ - to run all the feature: `yarn test:e2e tests/acceptance/feature` 
+ - to run specific scenario of a feature: `yarn test:e2e tests/acceptance/feature/<name-of-feature-file>:<line-number-of-the-scenario>
