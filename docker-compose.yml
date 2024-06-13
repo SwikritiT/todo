@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   dev-env:
-    build: .
+    build: .  # Build with the Dockerfile here
     command: npm start
     ports:
       - '3000:3000'
     volumes:
-      - ./:/usr/src/app
-      - node_modules:/usr/src/app/node_modules
+      - ./:/usr/src/app # modify the contents of the container locally
+      - node_modules:/usr/src/app/node_modules # ensure the dependencies built for the image are not available locally
     container_name: dev-env
 
 volumes:
